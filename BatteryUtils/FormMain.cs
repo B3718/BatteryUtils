@@ -106,9 +106,9 @@ namespace BatteryUtils
         internal const uint SET_BATTERY_THRESH_START = 0x222630;
         internal const uint SET_BATTERY_THRESH_STOP = 0x222638;
 
-        internal const byte DEFAULT_BATTERY_ID = 0x01;
+        internal const byte INTERNAL_BATTERY_ID = 0x01;
         //dual-battery laptops may have battery ID 0x02
-        internal const byte SECOND_BATTERY_ID = 0x02;
+        internal const byte EXTERNAL_BATTERY_ID = 0x02;
 
         public FormMain()
         {
@@ -123,19 +123,44 @@ namespace BatteryUtils
         private IntPtr handle = IntPtr.Zero;
         private void applyThreshold_Click(object sender, EventArgs e)
         {
-            decimal start = startThreshold.Value - 1;
-            decimal stop = stopThreshold.Value;
-            stop = stop == 100 ? 0x00 : stop;
-            //先执行停止指令
-            SetBatteryThresh(handle, stop, DEFAULT_BATTERY_ID, SET_BATTERY_THRESH_STOP);
-            //dual-battery laptops may need to set the second battery as well
-            SetBatteryThresh(handle, stop, SECOND_BATTERY_ID, SET_BATTERY_THRESH_STOP);
+            //decimal start = startThresholdInternal.Value - 1;
+            //decimal stop = stopThresholdInternal.Value;
+            //stop = stop == 100 ? 0x00 : stop;
+            ////先执行停止指令
+            //SetBatteryThresh(handle, stop, INTERNAL_BATTERY_ID, SET_BATTERY_THRESH_STOP);
+            ////dual-battery laptops may need to set the second battery as well
+            //SetBatteryThresh(handle, stop, EXTERNAL_BATTERY_ID, SET_BATTERY_THRESH_STOP);
 
-            //再执行开始指令
-            SetBatteryThresh(handle, start, DEFAULT_BATTERY_ID, SET_BATTERY_THRESH_START);
-            //dual-battery laptops may need to set the second battery as well
-            SetBatteryThresh(handle, start, SECOND_BATTERY_ID, SET_BATTERY_THRESH_START);
+            ////再执行开始指令
+            //SetBatteryThresh(handle, start, INTERNAL_BATTERY_ID, SET_BATTERY_THRESH_START);
+            ////dual-battery laptops may need to set the second battery as well
+            //SetBatteryThresh(handle, start, EXTERNAL_BATTERY_ID, SET_BATTERY_THRESH_START);
+
+            // ===== 内置电池 =====
+            applyBattery(
+                INTERNAL_BATTERY_ID,
+                startThresholdInternal.Value,
+                stopThresholdInternal.Value
+            );
+
+            // ===== 外置电池 =====
+            applyBattery(
+                EXTERNAL_BATTERY_ID,
+                startThresholdExternal.Value,
+                stopThresholdExternal.Value
+            );
         }
+
+        //对单块电池的阈值进行设置的逻辑
+        private void applyBattery(byte batteryId, decimal startUI, decimal stopUI)
+        {
+            decimal start = startUI - 1;
+            decimal stop = stopUI == 100 ? 0x00 : stopUI;
+
+            SetBatteryThresh(handle, stop, batteryId, SET_BATTERY_THRESH_STOP);
+            SetBatteryThresh(handle, start, batteryId, SET_BATTERY_THRESH_START);
+        }
+
 
         private static bool SetBatteryThresh(IntPtr handle, decimal value, byte id, uint controlCode)
         {
@@ -189,9 +214,15 @@ namespace BatteryUtils
                     throw new Exception(
                         "SetupDiGetDeviceInterfaceDetail call failed but Win32 didn't catch an error.");
             }
+            GetValueAndSetUI(INTERNAL_BATTERY_ID, startThresholdInternal, stopThresholdInternal);
+            GetValueAndSetUI(EXTERNAL_BATTERY_ID, startThresholdExternal, stopThresholdExternal);
+        }
 
+        private void GetValueAndSetUI(byte batteryId, System.Windows.Forms.NumericUpDown startThreshold, System.Windows.Forms.NumericUpDown stopThreshold)
+        {
             GET_BATTERY_THRESH_IN batteryThresh = new GET_BATTERY_THRESH_IN();
-            batteryThresh.BatteryID = DEFAULT_BATTERY_ID;
+            batteryThresh.BatteryID = batteryId;
+
             int batteryThreshSize = Marshal.SizeOf(batteryThresh);
             IntPtr batteryThreshPointer = Marshal.AllocHGlobal(batteryThreshSize);
             Marshal.StructureToPtr(batteryThresh, batteryThreshPointer, false);
@@ -219,5 +250,6 @@ namespace BatteryUtils
                 Marshal.FreeHGlobal(batteryThreshOutPointer);
             }
         }
+
     }
 }

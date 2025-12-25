@@ -28,59 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelStartThreshold = new System.Windows.Forms.Label();
-            this.labelStopThreshold = new System.Windows.Forms.Label();
-            this.startThreshold = new System.Windows.Forms.NumericUpDown();
-            this.stopThreshold = new System.Windows.Forms.NumericUpDown();
+            this.labelStartThresholdInternal = new System.Windows.Forms.Label();
+            this.labelStopThresholdInternal = new System.Windows.Forms.Label();
+            this.startThresholdInternal = new System.Windows.Forms.NumericUpDown();
+            this.stopThresholdInternal = new System.Windows.Forms.NumericUpDown();
             this.monitorOFF = new System.Windows.Forms.Button();
             this.applyThreshold = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.startThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stopThreshold)).BeginInit();
+            this.labelStartThresholdExternal = new System.Windows.Forms.Label();
+            this.labelStopThresholdExternal = new System.Windows.Forms.Label();
+            this.startThresholdExternal = new System.Windows.Forms.NumericUpDown();
+            this.stopThresholdExternal = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.startThresholdInternal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stopThresholdInternal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startThresholdExternal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stopThresholdExternal)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelStartThreshold
+            // labelStartThresholdInternal
             // 
-            this.labelStartThreshold.AutoSize = true;
-            this.labelStartThreshold.Location = new System.Drawing.Point(15, 34);
-            this.labelStartThreshold.Name = "labelStartThreshold";
-            this.labelStartThreshold.Size = new System.Drawing.Size(149, 12);
-            this.labelStartThreshold.TabIndex = 0;
-            this.labelStartThreshold.Text = "start charge threshold %";
+            this.labelStartThresholdInternal.AutoSize = true;
+            this.labelStartThresholdInternal.Location = new System.Drawing.Point(22, 51);
+            this.labelStartThresholdInternal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStartThresholdInternal.Name = "labelStartThresholdInternal";
+            this.labelStartThresholdInternal.Size = new System.Drawing.Size(377, 18);
+            this.labelStartThresholdInternal.TabIndex = 0;
+            this.labelStartThresholdInternal.Text = "Internal battery start charge threshold %";
             // 
-            // labelStopThreshold
+            // labelStopThresholdInternal
             // 
-            this.labelStopThreshold.AutoSize = true;
-            this.labelStopThreshold.Location = new System.Drawing.Point(15, 61);
-            this.labelStopThreshold.Name = "labelStopThreshold";
-            this.labelStopThreshold.Size = new System.Drawing.Size(143, 12);
-            this.labelStopThreshold.TabIndex = 1;
-            this.labelStopThreshold.Text = "stop charge threshold %";
+            this.labelStopThresholdInternal.AutoSize = true;
+            this.labelStopThresholdInternal.Location = new System.Drawing.Point(22, 92);
+            this.labelStopThresholdInternal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStopThresholdInternal.Name = "labelStopThresholdInternal";
+            this.labelStopThresholdInternal.Size = new System.Drawing.Size(368, 18);
+            this.labelStopThresholdInternal.TabIndex = 1;
+            this.labelStopThresholdInternal.Text = "Internal battery stop charge threshold %";
             // 
-            // startThreshold
+            // startThresholdInternal
             // 
-            this.startThreshold.Location = new System.Drawing.Point(175, 32);
-            this.startThreshold.Minimum = new decimal(new int[] {
+            this.startThresholdInternal.Location = new System.Drawing.Point(420, 49);
+            this.startThresholdInternal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startThresholdInternal.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.startThreshold.Name = "startThreshold";
-            this.startThreshold.Size = new System.Drawing.Size(63, 21);
-            this.startThreshold.TabIndex = 2;
-            this.startThreshold.Value = new decimal(new int[] {
+            this.startThresholdInternal.Name = "startThresholdInternal";
+            this.startThresholdInternal.Size = new System.Drawing.Size(94, 28);
+            this.startThresholdInternal.TabIndex = 2;
+            this.startThresholdInternal.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // stopThreshold
+            // stopThresholdInternal
             // 
-            this.stopThreshold.Location = new System.Drawing.Point(175, 59);
-            this.stopThreshold.Minimum = this.startThreshold.Value;
-            this.stopThreshold.Name = "stopThreshold";
-            this.stopThreshold.Size = new System.Drawing.Size(63, 21);
-            this.stopThreshold.TabIndex = 3;
-            this.stopThreshold.Value = new decimal(new int[] {
+            this.stopThresholdInternal.Location = new System.Drawing.Point(420, 90);
+            this.stopThresholdInternal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stopThresholdInternal.Minimum = this.startThresholdInternal.Value;
+            this.stopThresholdInternal.Name = "stopThresholdInternal";
+            this.stopThresholdInternal.Size = new System.Drawing.Size(94, 28);
+            this.stopThresholdInternal.TabIndex = 3;
+            this.stopThresholdInternal.Value = new decimal(new int[] {
             100,
             0,
             0,
@@ -88,9 +99,10 @@
             // 
             // monitorOFF
             // 
-            this.monitorOFF.Location = new System.Drawing.Point(37, 86);
+            this.monitorOFF.Location = new System.Drawing.Point(285, 271);
+            this.monitorOFF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.monitorOFF.Name = "monitorOFF";
-            this.monitorOFF.Size = new System.Drawing.Size(93, 34);
+            this.monitorOFF.Size = new System.Drawing.Size(140, 51);
             this.monitorOFF.TabIndex = 4;
             this.monitorOFF.Text = "Monitor OFF";
             this.monitorOFF.UseVisualStyleBackColor = true;
@@ -98,34 +110,105 @@
             // 
             // applyThreshold
             // 
-            this.applyThreshold.Location = new System.Drawing.Point(136, 86);
+            this.applyThreshold.Location = new System.Drawing.Point(445, 271);
+            this.applyThreshold.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.applyThreshold.Name = "applyThreshold";
-            this.applyThreshold.Size = new System.Drawing.Size(102, 34);
+            this.applyThreshold.Size = new System.Drawing.Size(153, 51);
             this.applyThreshold.TabIndex = 5;
             this.applyThreshold.Text = "Apply";
             this.applyThreshold.UseVisualStyleBackColor = true;
             this.applyThreshold.Click += new System.EventHandler(this.applyThreshold_Click);
             // 
+            // labelStartThresholdExternal
+            // 
+            this.labelStartThresholdExternal.AutoSize = true;
+            this.labelStartThresholdExternal.Location = new System.Drawing.Point(22, 139);
+            this.labelStartThresholdExternal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStartThresholdExternal.Name = "labelStartThresholdExternal";
+            this.labelStartThresholdExternal.Size = new System.Drawing.Size(377, 18);
+            this.labelStartThresholdExternal.TabIndex = 6;
+            this.labelStartThresholdExternal.Text = "external battery start charge threshold %";
+            // 
+            // labelStopThresholdExternal
+            // 
+            this.labelStopThresholdExternal.AutoSize = true;
+            this.labelStopThresholdExternal.Location = new System.Drawing.Point(22, 180);
+            this.labelStopThresholdExternal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStopThresholdExternal.Name = "labelStopThresholdExternal";
+            this.labelStopThresholdExternal.Size = new System.Drawing.Size(368, 18);
+            this.labelStopThresholdExternal.TabIndex = 7;
+            this.labelStopThresholdExternal.Text = "external battery stop charge threshold %";
+            // 
+            // startThresholdExternal
+            // 
+            this.startThresholdExternal.Location = new System.Drawing.Point(420, 137);
+            this.startThresholdExternal.Margin = new System.Windows.Forms.Padding(4);
+            this.startThresholdExternal.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.startThresholdExternal.Name = "startThresholdExternal";
+            this.startThresholdExternal.Size = new System.Drawing.Size(94, 28);
+            this.startThresholdExternal.TabIndex = 8;
+            this.startThresholdExternal.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // stopThresholdExternal
+            // 
+            this.stopThresholdExternal.Location = new System.Drawing.Point(420, 178);
+            this.stopThresholdExternal.Margin = new System.Windows.Forms.Padding(4);
+            this.stopThresholdExternal.Minimum = this.startThresholdInternal.Value;
+            this.stopThresholdExternal.Name = "stopThresholdExternal";
+            this.stopThresholdExternal.Size = new System.Drawing.Size(94, 28);
+            this.stopThresholdExternal.TabIndex = 9;
+            this.stopThresholdExternal.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(21, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(514, 24);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "只支持联想双电池。单电池不要使用本工具！！";
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 141);
+            this.ClientSize = new System.Drawing.Size(664, 335);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.stopThresholdExternal);
+            this.Controls.Add(this.startThresholdExternal);
+            this.Controls.Add(this.labelStopThresholdExternal);
+            this.Controls.Add(this.labelStartThresholdExternal);
             this.Controls.Add(this.applyThreshold);
             this.Controls.Add(this.monitorOFF);
-            this.Controls.Add(this.stopThreshold);
-            this.Controls.Add(this.startThreshold);
-            this.Controls.Add(this.labelStopThreshold);
-            this.Controls.Add(this.labelStartThreshold);
+            this.Controls.Add(this.stopThresholdInternal);
+            this.Controls.Add(this.startThresholdInternal);
+            this.Controls.Add(this.labelStopThresholdInternal);
+            this.Controls.Add(this.labelStartThresholdInternal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Battery Utils";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.startThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stopThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startThresholdInternal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stopThresholdInternal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.startThresholdExternal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stopThresholdExternal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,12 +216,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelStartThreshold;
-        private System.Windows.Forms.Label labelStopThreshold;
-        private System.Windows.Forms.NumericUpDown startThreshold;
-        private System.Windows.Forms.NumericUpDown stopThreshold;
+        private System.Windows.Forms.Label labelStartThresholdInternal;
+        private System.Windows.Forms.Label labelStopThresholdInternal;
+        private System.Windows.Forms.NumericUpDown startThresholdInternal;
+        private System.Windows.Forms.NumericUpDown stopThresholdInternal;
         private System.Windows.Forms.Button monitorOFF;
         private System.Windows.Forms.Button applyThreshold;
+        private System.Windows.Forms.Label labelStartThresholdExternal;
+        private System.Windows.Forms.Label labelStopThresholdExternal;
+        private System.Windows.Forms.NumericUpDown startThresholdExternal;
+        private System.Windows.Forms.NumericUpDown stopThresholdExternal;
+        private System.Windows.Forms.Label label1;
     }
 }
 
