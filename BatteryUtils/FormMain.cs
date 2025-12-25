@@ -107,6 +107,9 @@ namespace BatteryUtils
         internal const uint SET_BATTERY_THRESH_STOP = 0x222638;
 
         internal const byte DEFAULT_BATTERY_ID = 0x01;
+        //dual-battery laptops may have battery ID 0x02
+        internal const byte SECOND_BATTERY_ID = 0x02;
+
         public FormMain()
         {
             InitializeComponent();
@@ -125,8 +128,13 @@ namespace BatteryUtils
             stop = stop == 100 ? 0x00 : stop;
             //先执行停止指令
             SetBatteryThresh(handle, stop, DEFAULT_BATTERY_ID, SET_BATTERY_THRESH_STOP);
+            //dual-battery laptops may need to set the second battery as well
+            SetBatteryThresh(handle, stop, SECOND_BATTERY_ID, SET_BATTERY_THRESH_STOP);
+
             //再执行开始指令
             SetBatteryThresh(handle, start, DEFAULT_BATTERY_ID, SET_BATTERY_THRESH_START);
+            //dual-battery laptops may need to set the second battery as well
+            SetBatteryThresh(handle, start, SECOND_BATTERY_ID, SET_BATTERY_THRESH_START);
         }
 
         private static bool SetBatteryThresh(IntPtr handle, decimal value, byte id, uint controlCode)
