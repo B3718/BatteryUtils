@@ -1,23 +1,67 @@
-# BatteryUtils
+# BatteryUtils (Dual Battery Fork)
 
-Thinkpad battery charge threshold utils
+A fork of [XYUU/BatteryUtils](https://github.com/XYUU/BatteryUtils) with **dual-battery support**
+for Lenovo ThinkPad laptops (e.g. T480, T470, X270).
 
-Exposes ACPI interface for battery controls.
+This tool allows setting **start / stop charging thresholds**
+for both internal and external batteries via Lenovo's power management driver.
 
-1. Turn off the monitor
-2. start charge threshold
-3. stop charge threshold
+[中文说明 / Chinese Version](README.zh-CN.md)
 
-* [Download BatteryUtils_N3.5](https://raw.githubusercontent.com/XYUU/BatteryUtils/master/BatteryUtils/bin/Release/BatteryUtils.exe)
-* [Download BatteryUtils_N4](https://raw.githubusercontent.com/XYUU/BatteryUtils/master/BatteryUtils/bin/Release/BatteryUtils_N4.exe)
+---
 
-N4 version, win10 does not install.Net 3.5 framework can be used directly
+## Features
 
-N4 版本，win10 不安装.net 3.5 framework可直接使用
+- Set charge start / stop thresholds
+- Supports **dual-battery ThinkPad models**
+- Lightweight WinForms application
+- No background service required
 
-This project is licensed under the GPLv3. See COPYING for details.
-Copyright 2016-2017 XYUU
+---
 
-目前只支持Thinkpad笔记本设置电池充电阈值，将来可能会支持其他品牌笔记本，等待有兴趣的朋友一起完善。
+## Supported Devices
 
-开发思路见我的[知乎专栏](https://zhuanlan.zhihu.com/p/20706403)
+- Lenovo ThinkPad laptops with **dual-battery design**
+  - T480 / T470 / X270 / similar models
+
+⚠️ Single-battery or non-Lenovo devices are **not supported**.
+
+---
+
+## Requirements
+
+- Windows 8 / Windows 10
+- Lenovo Power Management Driver (`IBMPmDrv`)
+- Run as **Administrator**
+
+---
+
+## ⚠️ Warning
+
+When clicking **Apply**, the program sends charge threshold commands to **both battery IDs**:
+
+- `0x01` — Internal battery
+- `0x02` — External battery
+
+On single-battery systems or unsupported devices, this behavior is untested and may cause
+undefined behavior.
+
+**Use at your own risk.**
+
+---
+
+## Downloads
+
+See the **Releases** page for prebuilt binaries:
+
+- `BatteryUtils-net35.exe` — .NET Framework 3.5
+- `BatteryUtils-net40.exe` — .NET Framework 4 (recommended)
+
+---
+
+## Credits
+
+Original project by **XYUU**:  
+https://github.com/XYUU/BatteryUtils
+
+This fork adds dual-battery support and refactors the code for maintainability.
