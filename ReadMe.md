@@ -6,7 +6,7 @@ for Lenovo ThinkPad laptops (e.g. T480, T470, X270).
 This tool allows setting **start / stop charging thresholds**
 for both internal and external batteries via Lenovo's power management driver.
 
-[中文说明 / Chinese Version](README.zh-CN.md)
+[中文说明 / Chinese Version](ReadMe.zh-CN.md)
 
 ---
 
@@ -65,3 +65,4 @@ Original project by **XYUU**:
 https://github.com/XYUU/BatteryUtils
 
 This fork adds dual-battery support and refactors the code for maintainability.
+
